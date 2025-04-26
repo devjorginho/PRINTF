@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:57:16 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/04/25 20:53:37 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/04/26 16:51:07 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,17 @@ int	ft_printf(const char *s, ...)
 	count = 0;
 	if (!*s)
 		return (count);
-	while (*s)
+	while (*s && count >= 0)
 	{
 		if (*s == '%' && *(s + 1) != '%' && *(s + 1))
 			count += formathandle(args, *(++s));
 		else if (*s == '%' && *(s + 1) == '%')
 			count += write(1, s++, 1);
+		else if(*s == '%' && *(s + 1) == 0)
+		{
+			count = -1;
+			break;
+		}
 		else
 			count += write(1, s, 1);
 		s++;
@@ -62,3 +67,4 @@ int	ft_printf(const char *s, ...)
 		return (-1);
 	return (count);
 }
+

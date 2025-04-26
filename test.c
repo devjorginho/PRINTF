@@ -2,32 +2,34 @@
 
 int main()
 {
-	unsigned int un = 424242;
+	unsigned int un = -4242424242424422;
 	int n = -42;
 	int	n1 = 15;
 	char c = 'c';
-	char *str = NULL;
+	char *str = "tes";
 	int counterft = 0;
 	int counteroriginal = 0;
 
 	ft_printf("===== My printf =====\n\n");
-	counterft += ft_printf("Test char: %c\n", c);
+	counterft += ft_printf("Test char: \n");
 	counterft += ft_printf("Test string: %s\n", str);
-	counterft += ft_printf("Test pointer: %p\n", &str);
+	counterft += ft_printf("Test pointer: %p\n", '\0');
 	counterft += ft_printf("Test integer: %d\n", n);
 	counterft += ft_printf("Test unsigned: %u\n", un);
-	counterft += ft_printf("Test hexLOW: %x\n", n1);
+	counterft += ft_printf("Test hexLOW: %x", &str);
+	write(1, "\n", 1);
 	counterft += ft_printf("Test hexUP: %X\n", n1);
 	counterft += ft_printf("Test percent: %%\n");
 	ft_printf("Return my printf: %d\n\n", counterft);
 
 	ft_printf("===== Original printf =====\n\n");
-	counteroriginal += printf("Test char: %c\n", c);
+	counteroriginal += printf("Test char: \n");
 	counteroriginal += printf("Test string: %s\n", str);
-	counteroriginal += printf("Test pointer: %p\n", &str);
+	counteroriginal += printf("Test pointer: %p\n", '\0');
 	counteroriginal += printf("Test integer: %d\n", n);
 	counteroriginal += printf("Test unsigned: %u\n", un);
-	counteroriginal += printf("Test hexLOW: %x\n", n1);
+	counteroriginal += printf("Test hexLOW: %x", &str);
+	printf("\n");
 	counteroriginal += printf("Test hexUP: %X\n", n1);
 	counteroriginal += printf("Test percent: %%\n");
 	printf("Return original printf: %d\n\n", counteroriginal);
